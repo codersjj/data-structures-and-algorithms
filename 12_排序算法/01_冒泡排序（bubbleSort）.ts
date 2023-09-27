@@ -10,6 +10,15 @@ function bubbleSort(arr: number[]): number[] {
       arr[j + 1] = temp
     }
   }
+  // 第二轮
+  // 此时最后一个元素已确定为最大值，接下来只需要在 arr[0]~arr[arr.length - 2] 之间进行比较了
+  for (let j = 0; j < n - 1 - 1; j++) {
+    if (arr[j] > arr[j + 1]) {
+      const temp = arr[j]
+      arr[j] = arr[j + 1]
+      arr[j + 1] = temp
+    }
+  }
 
   return arr
 }
