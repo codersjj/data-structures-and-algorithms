@@ -1,3 +1,5 @@
+import { swap, swapByXOR, swapByDestructuringAssignment } from "./utils"
+
 function bubbleSort(arr: number[]): number[] {
   // n 刚好表示数据量，后续可以用来在大 O 表示法中进行算法复杂度分析
   const n = arr.length
@@ -10,9 +12,7 @@ function bubbleSort(arr: number[]): number[] {
     // 内层 for 循环：找到（本轮循环中的）最大值
     for (let j = 0; j < n - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
-        const temp = arr[j]
-        arr[j] = arr[j + 1]
-        arr[j + 1] = temp
+        swap(arr, j, j + 1)
       }
     }
   }
