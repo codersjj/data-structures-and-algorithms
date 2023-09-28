@@ -1,4 +1,9 @@
-import { swap, swapByXOR, swapByDestructuringAssignment } from "./utils"
+import {
+  swap,
+  swapByXOR,
+  swapByDestructuringAssignment,
+  testSort
+} from "./utils"
 
 function bubbleSort(arr: number[]): number[] {
   // n 刚好表示数据量，后续可以用来在大 O 表示法中进行算法复杂度分析
@@ -21,7 +26,4 @@ function bubbleSort(arr: number[]): number[] {
 }
 
 // 测试代码
-const arr = [9, 6, 2, 8, 3, 1, 7, 5, 4]
-console.log('before:', arr)
-bubbleSort(arr)
-console.log('after:', arr)
+testSort(bubbleSort)
