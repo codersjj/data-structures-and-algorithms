@@ -12,8 +12,11 @@ function selectionSort(arr: number[]): number[] {
         minIndex = j
       }
     }
-    // 每一轮找到（选择出来）最小值后，只进行一次交换即可
-    swap(arr, i, minIndex)
+    // 每一轮找到（选择出来）最小值后，最多只进行一次交换即可
+    // 初始的 minIndex 改变了，才需要交换，否则，不需要交换
+    if (i !== minIndex) {
+      swap(arr, i, minIndex)
+    }
   }
 
   return arr
