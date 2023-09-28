@@ -2,7 +2,8 @@ import {
   swap,
   swapByXOR,
   swapByDestructuringAssignment,
-  testSort
+  testSort,
+  measureSort
 } from "./utils"
 
 function bubbleSort(arr: number[]): number[] {
@@ -22,4 +23,5 @@ function bubbleSort(arr: number[]): number[] {
 }
 
 // 测试代码
-testSort(bubbleSort)
+// testSort(bubbleSort)
+measureSort(bubbleSort)

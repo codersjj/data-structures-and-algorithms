@@ -42,3 +42,12 @@ export function testSort(sortFn: SortAlgorithmFn) {
   console.log('排序后：', res)
   console.log('排序是否正确：', isRightOrder(res))
 }
+
+export function measureSort(sortFn: SortAlgorithmFn, n: number = 100000) {
+  const nums = Array.from({ length: n }, () => Math.floor(Math.random() * n))
+  const startTime = performance.now()
+  sortFn(nums)
+  const endTime = performance.now()
+  const timeElapsed = (endTime - startTime).toFixed(3)
+  console.log(`使用 ${sortFn.name} 算法，对 ${n} 个元素进行排序，耗时 ${timeElapsed} 毫秒`)
+}
