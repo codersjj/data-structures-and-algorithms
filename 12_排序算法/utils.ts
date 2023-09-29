@@ -31,9 +31,9 @@ function isRightOrder(arr: number[]): boolean {
   }
   return true
 }
-export function testSort(sortFn: SortAlgorithmFn) {
-  // 1. 随机一个长度为 10 的数组（数组中存放多个数字）
-  const nums = Array.from({ length: 10 }, () => {
+export function testSort(sortFn: SortAlgorithmFn, arr?: number[]) {
+  // 1. 使用传入的数组，若没有传，则随机一个长度为 10 的数组（数组中存放多个数字）
+  let nums = arr || Array.from({ length: 10 }, () => {
     return Math.floor(Math.random() * 200)
   })
   console.log('排序前：', nums)
