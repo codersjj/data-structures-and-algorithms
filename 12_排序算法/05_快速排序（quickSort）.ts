@@ -5,7 +5,10 @@ function quickSort(arr: number[]): number[] {
   function partition(left: number, right: number): void {
     if (left >= right) return
 
-    // 1. 选择最后一个元素作为基准元素（pivot）
+    // 1. 随机选择基准元素（pivot）
+    const randomIndex = left + Math.floor(Math.random() * (right - left + 1))
+    // 将随机选择的元素与最后一个元素交换
+    swap(arr, randomIndex, right)
     const pivot = arr[right]
     // 2. 双指针进行交换操作（实现左边都是比 pivot 小的数字，右边都是比 pivot 大的数字）
     let i = left
@@ -56,3 +59,6 @@ testSort(quickSort, [
   107, 145
 ])
 measureSort(quickSort, 1000000)
+measureSort(quickSort, 0, Array.from({ length: 100000000 }, () => 2))
+measureSort(quickSort, 0, Array.from({ length: 1000 }, (v, i) => i))
+measureSort(quickSort, 0, Array.from({ length: 100000 }, (v, i) => i))
