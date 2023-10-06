@@ -3,7 +3,6 @@ import { measureSort, swap, testSort } from "./utils"
 function quickSort(arr: number[]): number[] {
   // 分割
   function partition(left: number, right: number): void {
-    // console.log('--------partition---------')
     if (left >= right) return
 
     // 1. 选择最后一个元素作为基准元素（pivot）
@@ -25,21 +24,16 @@ function quickSort(arr: number[]): number[] {
       // 来到这里时，说明已经找到了（大于或等于 pivot 的元素 arr[i] 和小于或等于 pivot 的元素 arr[j]）
       // 如果不加等于号，当出现等于 pivot 元素的情况时，会导致 while 无限循环
       if (i <= j) {
-        // console.log('swap', i, j)
         swap(arr, i, j)
         i++
         j--
       }
     }
 
-    // console.log('before swap pivot:', arr, i, j)
     // 将基准元素放到中间位置
     swap(arr, i, right)
-    // console.log("after swap pivot::", arr)
 
     // 递归地对左右两个子数组进行快速排序
-    // console.log('left arr index range:', left, j)
-    // console.log('right arr index range:', i + 1, right)
     partition(left, j)
     partition(i + 1, right)
   }
