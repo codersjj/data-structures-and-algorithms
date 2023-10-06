@@ -5,10 +5,11 @@ function quickSort(arr: number[]): number[] {
   function partition(left: number, right: number): void {
     if (left >= right) return
 
-    // 1. 随机选择基准元素（pivot）
-    const randomIndex = left + Math.floor(Math.random() * (right - left + 1))
-    // 将随机选择的元素与最后一个元素交换
-    swap(arr, randomIndex, right)
+    // 1. 选择三个数中的中间值（三数取中法）作为基准元素（pivot）
+    const mid = left + Math.floor((right - left) / 2)
+    const pivotIndex = medianOfThree(arr, left, mid, right)
+    // 将选定的基准元素移到数组末尾
+    swap(arr, pivotIndex, right)
     const pivot = arr[right]
     // 2. 双指针进行交换操作（实现左边都是比 pivot 小的数字，右边都是比 pivot 大的数字）
     let i = left
@@ -39,6 +40,20 @@ function quickSort(arr: number[]): number[] {
     // 递归地对左右两个子数组进行快速排序
     partition(left, j)
     partition(i + 1, right)
+  }
+
+  function medianOfThree(arr: number[], left: number, mid: number, right: number): number {
+    if (arr[left] > arr[mid]) {
+      swap(arr, left, mid)
+    }
+    if (arr[left] > arr[right]) {
+      swap(arr, left, right)
+    }
+    if (arr[mid] > arr[right]) {
+      swap(arr, mid, right)
+    }
+
+    return mid
   }
 
   partition(0, arr.length - 1)
