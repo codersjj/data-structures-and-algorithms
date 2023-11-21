@@ -24,20 +24,41 @@
   输出：[0,1]
 */
 
+// /**
+//  * 两数之和（暴力枚举）
+//  *    时间复杂度：O(n ^ 2)
+//  *    空间复杂度：O(1)，因为一共只用到了 3 个临时变量
+//  * @param {number[]} nums
+//  * @param {number} target
+//  * @returns number[]
+//  */
+// function twoSum(nums, target) {
+//   const len = nums.length
+//   for (let i = 0; i < len - 1; i++) {
+//     for (let j = i + 1; j < len; j++) {
+//       if (nums[i] + nums[j] === target) return [i, j]
+//     }
+//   }
+// }
+
 /**
- * 两数之和（暴力枚举）
- *    时间复杂度：O(n ^ 2)
- *    空间复杂度：O(1)，因为一共只用到了 3 个临时变量
+ * 两数之和（查找表法）
+ *    时间复杂度：O(n)
+ *    空间复杂度：O(n)，因为查找表中最多需要存 n - 1 个键值对
  * @param {number[]} nums
  * @param {number} target
  * @returns number[]
  */
 function twoSum(nums, target) {
+  const map = {}
   const len = nums.length
-  for (let i = 0; i < len - 1; i++) {
-    for (let j = i + 1; j < len; j++) {
-      if (nums[i] + nums[j] === target) return [i, j]
+  for (let i = 0; i < len; i++) {
+    const currentNum = nums[i]
+    const another = target - currentNum
+    if (map[another] !== undefined) {
+      return [map[another], i]
     }
+    map[currentNum] = i
   }
 }
 
